@@ -22,6 +22,7 @@ before_script:
   - php artisan serve &
   
 script:
+  - composer test -- --coverage-clover=coverage.xml
   - vendor/bin/phpunit --coverage-text
   
 notifications:
