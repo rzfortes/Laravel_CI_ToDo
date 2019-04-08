@@ -34,8 +34,3 @@ notifications:
     - "Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}`."
     - "Execution time: *%{duration}*"
     - "Message: %{message}"
-  email:
-    recipients:
-    - rzfortes@up.edu.ph
-    on_success: always
-    on_failure: always
