@@ -34,3 +34,5 @@ notifications:
       - "Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}`."
       - "Execution time: *%{duration}*"
       - "Message: %{message}"
+      - "%{repository_slug} (%{commit}) : %{message} %{foo} by %{author}"
+      - "Build details: %{build_url}"
