@@ -1,0 +1,25 @@
+language: php
+
+php:
+  - '7.3'
+
+addons:
+  chrome: stable
+
+services:
+  - mysql
+
+install:
+  - cp .env.travis .env
+  - mysql -e 'create database laravel_todo_ci;'
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction
+  - php artisan key:generate
+  - php artisan migrate:fresh --seed
+  
+before_script:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - php artisan serve &
+  
+script:
+  - vendor/bin/phpunit --coverage-text
