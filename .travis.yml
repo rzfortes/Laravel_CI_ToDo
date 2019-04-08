@@ -26,8 +26,6 @@ script:
   
 notifications:
   slack: cs167-119:2W4nx0HVaxunQyPdZNTJD9Du
-    on_success: never
-    on_failure: always
   email:
     recipients:
       - rzfortes@up.edu.ph
