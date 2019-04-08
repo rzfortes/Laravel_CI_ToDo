@@ -26,6 +26,12 @@ script:
   
 notifications:
   slack: cs167-119:2W4nx0HVaxunQyPdZNTJD9Du
+    template:
+      - "Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}`."
+      - "Execution time: *%{duration}*"
+      - "Message: %{message}"
+      - "%{repository_slug} (%{commit}) : %{message} %{foo} "
+      - "Build details: %{build_url}"
   email:
     recipients:
       - rzfortes@up.edu.ph
