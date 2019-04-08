@@ -26,7 +26,5 @@ script:
   
 notifications:
   slack:
-    rooms:
-	  - cs167-119:2W4nx0HVaxunQyPdZNTJD9Du#todo_ci
     on_success: always
     on_failure: always
