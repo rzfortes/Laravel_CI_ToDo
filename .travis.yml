@@ -28,9 +28,9 @@ notifications:
   slack:
     rooms:
       - secure: Rcxd9WlKwAaeTWJwONPcEIj4+kUS0F/wkN7T9NDeMtP7zT0pmIzdvSVT1mqhmracPfgtPx0cGFwduEy7DSmF/pB5WV/iOqoPY6H5LmPH+kmqeQUdKl4WB2ZROBvd3uZuyDYNdneLnxIZh4ANasYhcRcrFYGVtuh/SgeMVK9KxtJqIJ4RbKQWGhqkm6dJj10XkZC2mH4aPj5xNNtrksFWxdkljidiOsxQVkdKIxUBfJOTGjzA6OlBGgm+8WTGLmhnnUxmC2Jco17KvNSgSOp7buzz6ZuH/y7EsPh8MFbicCY6TYJjKPOK/98uNhFgxZEQ7I4X9iqBJiE2l8BD6SxL1vRtrqFbHU5VCYgTfGeRFApU16hpc9UZyIlQwyZ2VLUs7VI7JWKK5d1WuiG+9npe1/BoJmavH55AEvVS4GDyug3IyfdlPwMLr7e2mruCEO9DKMUz82UMid5+hz1hj5oRi9QeNz7LMxIUaDvtvmClLb6/8yhAFcpeNPX0jYtH2sfxGTk9xdmQKKAeAaVviJwIHnd5gEqH5xf5MAYTjQTGiJxWXJNJQfF55Y654clbIIrklWynhg6CCObUFSgVJMAL3Gur18+H+iBksYqZ+a3TQoiOrGNjpD7c1YasDI/0o7RLmCAfrCG+rAMFbC3tFDBMNmSPEdO0CNV8auVJ/iJgbdo=
-  on_success: always  # change: send a notification when the build status changes.
-  on_failure: always  # always: always send a notification.
-  template:
-    - "Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}`."
-    - "Execution time: *%{duration}*"
-    - "Message: %{message}"
+    on_success: always  # change: send a notification when the build status changes.
+    on_failure: always  # always: always send a notification.
+    template:
+      - "Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}`."
+      - "Execution time: *%{duration}*"
+      - "Message: %{message}"
