@@ -25,6 +25,8 @@ script:
   - vendor/bin/phpunit --coverage-text
   
 notifications:
-  slack: cs167-119:dfTaElrr0HD8BoObgnWsF7iq
+  slack:
+    rooms:
+	  - cs167-119:2W4nx0HVaxunQyPdZNTJD9Du#todo_ci
     on_success: always
-    on_fail: always
+    on_failure: always
