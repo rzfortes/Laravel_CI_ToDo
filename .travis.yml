@@ -22,10 +22,12 @@ before_script:
   - php artisan serve &
   
 script:
-  - composer test -- --coverage-clover=coverage.xml
   - vendor/bin/phpunit --coverage-text
   
 notifications:
-  slack:
-    on_success: always
-    on_failure: always
+  slack: cs167-119:2W4nx0HVaxunQyPdZNTJD9Du
+  email:
+    recipients:
+      - rzfortes@up.edu.ph
+    on_success: change # default: change
+    on_failure: always # default: always
