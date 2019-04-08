@@ -23,3 +23,8 @@ before_script:
   
 script:
   - vendor/bin/phpunit --coverage-text
+  
+notifications:
+  slack: cs167-119:dfTaElrr0HD8BoObgnWsF7iq
+    on_success: always
+    on_fail: always
