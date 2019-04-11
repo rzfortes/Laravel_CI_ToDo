@@ -1,36 +1,31 @@
 language: php
-
 php:
-  - '7.3'
-
+- '7.3'
 addons:
   chrome: stable
-
 services:
-  - mysql
-
+- mysql
 install:
-  - cp .env.travis .env
-  - mysql -e 'create database laravel_todo_ci;'
-  - travis_retry composer self-update
-  - travis_retry composer install --no-interaction
-  - php artisan key:generate
-  - php artisan migrate:fresh --seed
-
+- cp .env.travis .env
+- mysql -e 'create database laravel_todo_ci;'
+- travis_retry composer self-update
+- travis_retry composer install --no-interaction
+- php artisan key:generate
+- php artisan migrate:fresh --seed
 before_script:
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://127.0.0.1:8000 &
-  - php artisan serve &
-
+- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://127.0.0.1:8000
+  &
+- php artisan serve &
 script:
-  - vendor/bin/phpunit --coverage-text
-
+- vendor/bin/phpunit --coverage-text
 notifications:
   slack:
     rooms:
-      - secure: Rcxd9WlKwAaeTWJwONPcEIj4+kUS0F/wkN7T9NDeMtP7zT0pmIzdvSVT1mqhmracPfgtPx0cGFwduEy7DSmF/pB5WV/iOqoPY6H5LmPH+kmqeQUdKl4WB2ZROBvd3uZuyDYNdneLnxIZh4ANasYhcRcrFYGVtuh/SgeMVK9KxtJqIJ4RbKQWGhqkm6dJj10XkZC2mH4aPj5xNNtrksFWxdkljidiOsxQVkdKIxUBfJOTGjzA6OlBGgm+8WTGLmhnnUxmC2Jco17KvNSgSOp7buzz6ZuH/y7EsPh8MFbicCY6TYJjKPOK/98uNhFgxZEQ7I4X9iqBJiE2l8BD6SxL1vRtrqFbHU5VCYgTfGeRFApU16hpc9UZyIlQwyZ2VLUs7VI7JWKK5d1WuiG+9npe1/BoJmavH55AEvVS4GDyug3IyfdlPwMLr7e2mruCEO9DKMUz82UMid5+hz1hj5oRi9QeNz7LMxIUaDvtvmClLb6/8yhAFcpeNPX0jYtH2sfxGTk9xdmQKKAeAaVviJwIHnd5gEqH5xf5MAYTjQTGiJxWXJNJQfF55Y654clbIIrklWynhg6CCObUFSgVJMAL3Gur18+H+iBksYqZ+a3TQoiOrGNjpD7c1YasDI/0o7RLmCAfrCG+rAMFbC3tFDBMNmSPEdO0CNV8auVJ/iJgbdo=
-    on_success: always  # change: send a notification when the build status changes.
-    on_failure: always  # always: always send a notification.
+      secure: FPOG51LJqDrr6R5Ol/EF25V0pVvg9A3xjUvgmX1Bmv0FhzjreGsupY3u29fpPmBIsbFDaQxc8g8sRAUvud16JiTwHI42JKbDtJ1qsn7jMFPPTGJumZds3IKeDssAq2k46y9sPOUXd7tiBXts1t/AsCpfMb8jEeYVNxMFrhTRdYAi0iYqi3QtYA8clD9okAdpeBShGk6JBdshICHOrXn6F2Jb3mZ2Tcno94ybBNqw7o3yAn+wU3ZtkBZEBsS3fGBSP6QDkMgcOdINXFKptvEchY9j4P0RYyI3dzHlkpYAvWrMbPnvOc+/vi68QfbKFYbwBp/Tw7IWZBTE4RW7tTLM365PcI3F32gO2DKRXfQfK/RnxUi+gOQxNyT+PYbVep0ZTQk4qafSynCgURj0ScxyWgWa5E4IR9kzwk/stG12UH7KpHopjXTrHXY9E4YAyvCM3qgvuyLCjBTmowt9WRtumDMEcEzSrGFCaNp0Ltl7jZ9/GyO1NTJzQVPNjT2HmB5CYinnV85p1yHaq8vgqly7LkAPKeJISvXXTA0NtVXxip+81SEKmjloj2wIoV4MiH32INrAbXTWp785JSxJx9nBpyV2egCTbKnvOfBt2o3Ri9H5J+aKOF9H4Qzt74EV0dh2Toc6cM9X88YsO+jGlwggc1km1KJTEN7RayAz/y8i0/Y=
+    on_success: always
+    on_failure: always
     template:
-      - "`%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}` by %{author}."
-      - "Execution time: *%{duration}*"
-      - "Message: %{message}"
+    - "`%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for
+      commit (<%{compare_url}|%{commit}>) on branch `%{branch}` by %{author}."
+    - 'Execution time: *%{duration}*'
+    - 'Message: %{message}'
