@@ -22,7 +22,7 @@ before_script:
   - php artisan serve &
 
 script:
-  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+  - vendor/bin/phpunit --coverage-text
 
 notifications:
   slack:
