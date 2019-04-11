@@ -24,10 +24,6 @@ before_script:
 script:
   - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 
-after_script:
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-
 notifications:
   slack:
     rooms:
@@ -38,3 +34,7 @@ notifications:
       - "`%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}` by %{author}."
       - "Execution time: *%{duration}*"
       - "Message: %{message}"
+
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
