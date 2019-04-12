@@ -30,6 +30,7 @@ notifications:
     - 'Execution time: *%{duration}*'
     - 'Message: %{message}'
   email:
-    - rzfortes@up.edu.ph
+    recipients:
+      - rzfortes@up.edu.ph
     on_success: always
     on_failure: always
