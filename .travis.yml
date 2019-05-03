@@ -34,6 +34,3 @@ notifications:
       - rzfortes@up.edu.ph
     on_success: always
     on_failure: always
-after_script:
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
