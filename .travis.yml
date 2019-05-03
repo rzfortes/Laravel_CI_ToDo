@@ -17,7 +17,7 @@ before_script:
   &
 - php artisan serve &
 script:
-- vendor/bin/phpunit --coverage-text --coverage-clover=clover
+- vendor/bin/phpunit --coverage-text
 notifications:
   slack:
     rooms:
@@ -29,8 +29,8 @@ notifications:
       commit (<%{compare_url}|%{commit}>) on branch `%{branch}` by %{author}."
     - 'Execution time: *%{duration}*'
     - 'Message: %{message}'
-  email:
-    recipients:
-      - rzfortes@up.edu.ph
-    on_success: always
-    on_failure: always
+  # email:
+  #   recipients:
+  #     - rzfortes@up.edu.ph
+  #   on_success: always
+  #   on_failure: always
